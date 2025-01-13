@@ -27,17 +27,22 @@ ENVOY_SHA = "2aaa544747e88cf80c17ef66b94b7c05ed198fa1"
 
 ENVOY_SHA256 = "4e284f989bb996070e274b2c20f5b26ba48afcc7ee66618e3886336e535b7934"
 
-ENVOY_ORG = "envoyproxy"
+# ENVOY_ORG = "envoyproxy"
 
-ENVOY_REPO = "envoy"
+# ENVOY_REPO = "envoy"
 
 # To override with local envoy, just pass `--override_repository=envoy=/PATH/TO/ENVOY` to Bazel or
 # persist the option in `user.bazelrc`.
-http_archive(
+# http_archive(
+#     name = "envoy",
+#     sha256 = ENVOY_SHA256,
+#     strip_prefix = ENVOY_REPO + "-" + ENVOY_SHA,
+#     url = "https://github.com/" + ENVOY_ORG + "/" + ENVOY_REPO + "/archive/" + ENVOY_SHA + ".tar.gz",
+# )
+
+local_repository(
     name = "envoy",
-    sha256 = ENVOY_SHA256,
-    strip_prefix = ENVOY_REPO + "-" + ENVOY_SHA,
-    url = "https://github.com/" + ENVOY_ORG + "/" + ENVOY_REPO + "/archive/" + ENVOY_SHA + ".tar.gz",
+    path = "envoy"
 )
 
 load("@envoy//bazel:api_binding.bzl", "envoy_api_binding")
