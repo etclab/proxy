@@ -13,4 +13,5 @@ test/envoye2e/http_metadata_exchange/testoutput
 *.wasm
 .vscode
 out/
+envoy/
 .cache
